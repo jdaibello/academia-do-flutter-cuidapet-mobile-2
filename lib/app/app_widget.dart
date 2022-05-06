@@ -8,6 +8,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Modular.setInitialRoute('/auth');
     Modular.setObservers([asuka.asukaHeroController]);
 
     return ScreenUtilInit(
