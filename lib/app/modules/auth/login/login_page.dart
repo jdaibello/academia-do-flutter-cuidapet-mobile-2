@@ -1,3 +1,4 @@
+import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_textform_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -9,7 +10,20 @@ class LoginPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Login Page'),
       ),
-      body: Container(),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: [
+            CuidapetTextFormField(
+              label: 'E-mail',
+            ),
+            CuidapetTextFormField(
+              label: 'Senha',
+              obscureText: true,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
