@@ -1,5 +1,6 @@
 import 'package:cuidapet_mobile/app/core/ui/icons/cuidapet_icons.dart';
 import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_textform_field.dart';
+import 'package:cuidapet_mobile/app/core/ui/widgets/rounded_button_with_icon.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -22,7 +23,32 @@ class LoginPage extends StatelessWidget {
               label: 'Senha',
               obscureText: true,
             ),
-            const Icon(CuidapetIcons.google),
+            RoundedButtonWithIcon(
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Clicou no Facebook'),
+                  ),
+                );
+              },
+              width: 200,
+              color: Colors.blue,
+              icon: CuidapetIcons.facebook,
+              label: 'Facebook',
+            ),
+            RoundedButtonWithIcon(
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Clicou no Google'),
+                  ),
+                );
+              },
+              width: 200,
+              color: Colors.red,
+              icon: CuidapetIcons.google,
+              label: 'Google',
+            ),
           ],
         ),
       ),
