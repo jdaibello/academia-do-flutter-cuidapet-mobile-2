@@ -1,3 +1,4 @@
+import 'package:cuidapet_mobile/app/core/ui/icons/cuidapet_icons.dart';
 import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_textform_field.dart';
 import 'package:flutter/material.dart';
 
@@ -21,6 +22,7 @@ class LoginPage extends StatelessWidget {
               label: 'Senha',
               obscureText: true,
             ),
+            const Icon(CuidapetIcons.google),
           ],
         ),
       ),
