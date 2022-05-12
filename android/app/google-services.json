@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1015725883115",
+    "project_id": "cuidapet-mobile-2",
+    "storage_bucket": "cuidapet-mobile-2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1015725883115:android:73133cb5b126cc955b88ae",
+        "android_client_info": {
+          "package_name": "br.com.academiadoflutter.cuidapet_mobile_2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1015725883115-2mek3r44vrpi5lb8g86jnndhdbp7gc3f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD21Av5R-bHKDrMC8Oo5wqF3IgfuVYb9MY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1015725883115-2mek3r44vrpi5lb8g86jnndhdbp7gc3f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
