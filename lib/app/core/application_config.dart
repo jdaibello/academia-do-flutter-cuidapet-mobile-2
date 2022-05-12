@@ -1,5 +1,5 @@
 import 'package:cuidapet_mobile_2/app/core/helpers/environments.dart';
-import 'package:cuidapet_mobile_2/firebase_options.dart';
+import 'package:cuidapet_mobile_2/app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
