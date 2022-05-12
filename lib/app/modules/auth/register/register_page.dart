@@ -1,6 +1,6 @@
-import 'package:cuidapet_mobile/app/core/ui/extensions/size_screen_extension.dart';
-import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_default_button.dart';
-import 'package:cuidapet_mobile/app/core/ui/widgets/cuidapet_textform_field.dart';
+import 'package:cuidapet_mobile_2/app/core/ui/extensions/size_screen_extension.dart';
+import 'package:cuidapet_mobile_2/app/core/ui/widgets/cuidapet_default_button.dart';
+import 'package:cuidapet_mobile_2/app/core/ui/widgets/cuidapet_textform_field.dart';
 import 'package:flutter/material.dart';
 
 part 'widgets/register_form.dart';

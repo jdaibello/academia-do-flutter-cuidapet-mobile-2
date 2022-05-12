@@ -1,4 +1,4 @@
-import 'package:cuidapet_mobile/app/models/user_model.dart';
+import 'package:cuidapet_mobile_2/app/models/user_model.dart';
 import 'package:mobx/mobx.dart';
 
 part 'auth_store.g.dart';

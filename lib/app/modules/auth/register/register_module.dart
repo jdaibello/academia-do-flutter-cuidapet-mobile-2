@@ -1,4 +1,4 @@
-import 'package:cuidapet_mobile/app/modules/auth/register/register_page.dart';
+import 'package:cuidapet_mobile_2/app/modules/auth/register/register_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class RegisterModule extends Module {

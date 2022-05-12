@@ -1,4 +1,4 @@
-import 'package:cuidapet_mobile/app/modules/core/auth/auth_store.dart';
+import 'package:cuidapet_mobile_2/app/modules/core/auth/auth_store.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class CoreModule extends Module {

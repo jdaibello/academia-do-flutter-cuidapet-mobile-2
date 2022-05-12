@@ -1,5 +1,5 @@
 import 'package:asuka/asuka.dart' as asuka;
-import 'package:cuidapet_mobile/app/core/ui/ui_config.dart';
+import 'package:cuidapet_mobile_2/app/core/ui/ui_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,10 +17,7 @@ class AppWidget extends StatelessWidget {
       builder: (_) => MaterialApp.router(
         title: UiConfig.title,
         debugShowCheckedModeBanner: false,
-        builder: (context, child) {
-          ScreenUtil.init(context);
-          return asuka.builder(context, child);
-        },
+        builder: asuka.builder,
         theme: UiConfig.theme,
         routeInformationParser: Modular.routeInformationParser,
         routerDelegate: Modular.routerDelegate,

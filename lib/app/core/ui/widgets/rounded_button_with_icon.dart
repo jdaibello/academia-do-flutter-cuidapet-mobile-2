@@ -1,4 +1,4 @@
-import 'package:cuidapet_mobile/app/core/ui/extensions/size_screen_extension.dart';
+import 'package:cuidapet_mobile_2/app/core/ui/extensions/size_screen_extension.dart';
 import 'package:flutter/material.dart';
 
 class RoundedButtonWithIcon extends StatelessWidget {
