@@ -33,7 +33,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_mobx: ^2.0.5
-  flutter_modular: ^4.5.1+1
+  flutter_modular: ^5.0.0
   flutter_screenutil: ^5.5.2
   mobx: ^2.0.7
 
