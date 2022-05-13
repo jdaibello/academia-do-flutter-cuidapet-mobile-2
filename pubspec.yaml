@@ -39,6 +39,7 @@ dependencies:
   flutter_mobx: ^2.0.5
   flutter_modular: ^5.0.0
   flutter_screenutil: ^5.5.2
+  logger: ^1.1.0
   mobx: ^2.0.7
 
 dev_dependencies:
