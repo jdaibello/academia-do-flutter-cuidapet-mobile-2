@@ -23,7 +23,10 @@ class _LoginFormState extends State<_LoginForm> {
           ),
           const SizedBox(height: 20),
           CuidapetDefaultButton(
-            onPressed: () {},
+            onPressed: () {
+              Loader.show();
+              Future.delayed(const Duration(seconds: 2), () => Loader.hide());
+            },
             label: 'Entrar',
           ),
         ],
