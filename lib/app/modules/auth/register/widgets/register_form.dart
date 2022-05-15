@@ -62,11 +62,11 @@ class _RegisterFormState
           ),
           const SizedBox(height: 20),
           CuidapetDefaultButton(
-            onPressed: () {
+            onPressed: () async {
               final formValid = _formKey.currentState?.validate() ?? false;
 
               if (formValid) {
-                controller.register(
+                await controller.register(
                   email: _emailEC.text,
                   password: _passwordEC.text,
                 );
