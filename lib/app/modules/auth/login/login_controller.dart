@@ -1,5 +1,8 @@
+import 'package:cuidapet_mobile_2/app/core/exceptions/failure_exception.dart';
+import 'package:cuidapet_mobile_2/app/core/exceptions/user_not_exists_exception.dart';
 import 'package:cuidapet_mobile_2/app/core/logger/app_logger.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/widgets/loader.dart';
+import 'package:cuidapet_mobile_2/app/core/ui/widgets/messages.dart';
 import 'package:cuidapet_mobile_2/app/services/user/user_service.dart';
 import 'package:mobx/mobx.dart';
 
@@ -17,9 +20,23 @@ abstract class LoginControllerBase with Store {
   })  : _userService = userService,
         _log = log;
 
-  Future<void> login(String emial, String password) async {
-    Loader.show();
-    await Future.delayed(const Duration(seconds: 2));
-    Loader.hide();
+  Future<void> login(String email, String password) async {
+    try {
+      Loader.show();
+      await _userService.loginWithEmailAndPassword(email, password);
+      Loader.hide();
+    } on FailureException catch (e, s) {
+      final errorMessage = e.message ?? 'Erro ao realizar login';
+
+      _log.error(errorMessage, e, s);
+      Loader.hide();
+      Messages.alert(errorMessage);
+    } on UserNotExistsException catch (e, s) {
+      const errorMessage = 'Usuário não cadastrado';
+
+      _log.error(errorMessage, e, s);
+      Loader.hide();
+      Messages.alert(errorMessage);
+    }
   }
 }
