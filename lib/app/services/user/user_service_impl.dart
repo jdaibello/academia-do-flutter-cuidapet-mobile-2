@@ -117,7 +117,7 @@ class UserServiceImpl implements UserService {
     final userModel = await _userRepository.getUserLogged();
 
     await _localStorage.write<String>(
-      Constants.LOCAL_STORAGE_USER_LOGGED_DATA,
+      Constants.LOCAL_STORAGE_USER_LOGGED_DATA_KEY,
       userModel.toJson(),
     );
   }

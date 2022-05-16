@@ -12,13 +12,16 @@ class CoreModule extends Module {
   @override
   final List<Bind> binds = [
     Bind.lazySingleton(
-      (i) => AuthStore(),
+      (i) => AuthStore(
+        localStorage: i(),
+      ),
       export: true,
     ),
     Bind.lazySingleton<RestClient>(
       (i) => DioRestClient(
         localStorage: i(),
         log: i(),
+        authStore: i(),
       ),
       export: true,
     ),
