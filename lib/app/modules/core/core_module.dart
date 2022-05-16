@@ -16,7 +16,10 @@ class CoreModule extends Module {
       export: true,
     ),
     Bind.lazySingleton<RestClient>(
-      (i) => DioRestClient(),
+      (i) => DioRestClient(
+        localStorage: i(),
+        log: i(),
+      ),
       export: true,
     ),
     Bind.lazySingleton<AppLogger>(

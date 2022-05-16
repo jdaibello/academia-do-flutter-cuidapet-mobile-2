@@ -80,12 +80,6 @@ class UserServiceImpl implements UserService {
         );
 
         await _saveAccessToken(accessToken);
-
-        final token = await _localStorage.read<String>(
-          Constants.LOCAL_STORAGE_ACCESS_TOKEN_KEY,
-        );
-
-        debugPrint('$token');
       } else {
         throw FailureException(
             message:
