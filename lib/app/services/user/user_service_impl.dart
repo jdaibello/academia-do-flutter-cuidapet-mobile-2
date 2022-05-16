@@ -1,6 +1,8 @@
 import 'package:cuidapet_mobile_2/app/core/exceptions/failure_exception.dart';
 import 'package:cuidapet_mobile_2/app/core/exceptions/user_exists_exception.dart';
 import 'package:cuidapet_mobile_2/app/core/exceptions/user_not_exists_exception.dart';
+import 'package:cuidapet_mobile_2/app/core/helpers/constants.dart';
+import 'package:cuidapet_mobile_2/app/core/local_storage/local_storage.dart';
 import 'package:cuidapet_mobile_2/app/core/logger/app_logger.dart';
 import 'package:cuidapet_mobile_2/app/repositories/user/user_repository.dart';
 import 'package:cuidapet_mobile_2/app/services/user/user_service.dart';
@@ -10,12 +12,15 @@ import 'package:flutter/material.dart';
 class UserServiceImpl implements UserService {
   final UserRepository _userRepository;
   final AppLogger _log;
+  final LocalStorage _localStorage;
 
   UserServiceImpl({
     required UserRepository userRepository,
     required AppLogger log,
+    required LocalStorage localStorage,
   })  : _log = log,
-        _userRepository = userRepository;
+        _userRepository = userRepository,
+        _localStorage = localStorage;
 
   @override
   Future<void> register(String email, String password) async {
@@ -68,6 +73,19 @@ class UserServiceImpl implements UserService {
         }
 
         debugPrint('E-mail verificado');
+
+        final accessToken = await _userRepository.loginWithEmailAndPassword(
+          email,
+          password,
+        );
+
+        await _saveAccessToken(accessToken);
+
+        final token = await _localStorage.read<String>(
+          Constants.LOCAL_STORAGE_ACCESS_TOKEN_KEY,
+        );
+
+        debugPrint('$token');
       } else {
         throw FailureException(
             message:
@@ -82,4 +100,7 @@ class UserServiceImpl implements UserService {
       throw FailureException(message: 'E-mail ou senha inválidos!!!');
     }
   }
+
+  Future<void> _saveAccessToken(String accessToken) => _localStorage
+      .write<String>(Constants.LOCAL_STORAGE_ACCESS_TOKEN_KEY, accessToken);
 }
