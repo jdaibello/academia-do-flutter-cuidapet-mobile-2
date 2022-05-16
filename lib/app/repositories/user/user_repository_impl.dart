@@ -6,6 +6,7 @@ import 'package:cuidapet_mobile_2/app/core/logger/app_logger.dart';
 import 'package:cuidapet_mobile_2/app/core/rest_client/rest_client.dart';
 import 'package:cuidapet_mobile_2/app/core/rest_client/rest_client_exception.dart';
 import 'package:cuidapet_mobile_2/app/models/confirm_login_model.dart';
+import 'package:cuidapet_mobile_2/app/models/user_model.dart';
 import 'package:cuidapet_mobile_2/app/repositories/user/user_repository.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 
@@ -28,7 +29,7 @@ class UserRepositoryImpl implements UserRepository {
       });
     } on RestClientException catch (e, s) {
       if (e.statusCode == 400 &&
-          e.response.data['message'].contains('User already registeded')) {
+          e.response.data['message'].contains('User already registered')) {
         _log.error(e.error, e, s);
         throw UserExistsException();
       }
@@ -86,6 +87,17 @@ class UserRepositoryImpl implements UserRepository {
     } on RestClientException catch (e, s) {
       _log.error('Erro ao confirmar o login', e, s);
       throw FailureException(message: 'Erro ao confirmar o login');
+    }
+  }
+
+  @override
+  Future<UserModel> getUserLogged() async {
+    try {
+      final result = await _restClient.get('/user/');
+      return UserModel.fromMap(result.data);
+    } on RestClientException catch (e, s) {
+      _log.error('Erro ao buscar dados do usuário logado', e, s);
+      throw FailureException(message: 'Erro ao buscar dados do usuário logado');
     }
   }
 }
