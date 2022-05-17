@@ -3,6 +3,7 @@ import 'package:cuidapet_mobile_2/app/core/exceptions/user_not_exists_exception.
 import 'package:cuidapet_mobile_2/app/core/logger/app_logger.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/widgets/loader.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/widgets/messages.dart';
+import 'package:cuidapet_mobile_2/app/models/social_login_type.dart';
 import 'package:cuidapet_mobile_2/app/services/user/user_service.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
@@ -39,6 +40,18 @@ abstract class LoginControllerBase with Store {
       _log.error(errorMessage, e, s);
       Loader.hide();
       Messages.alert(errorMessage);
+    }
+  }
+
+  Future<void> socialLogin(SocialLoginType socialLoginType) async {
+    try {
+      Loader.show();
+      await _userService.socialLogin(socialLoginType);
+      Loader.hide();
+    } on FailureException catch (e, s) {
+      Loader.hide();
+      _log.error('Erro ao realizar login', e, s);
+      Messages.alert(e.message ?? 'Erro ao realizar login');
     }
   }
 }

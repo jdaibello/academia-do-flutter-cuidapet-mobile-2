@@ -1,7 +1,9 @@
 part of '../login_page.dart';
 
-class _LoginRegisterButton extends StatelessWidget {
-  const _LoginRegisterButton({Key? key}) : super(key: key);
+class _LoginRegisterButtons extends StatelessWidget {
+  final controller = Modular.get<LoginController>();
+
+  _LoginRegisterButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class _LoginRegisterButton extends StatelessWidget {
         ),
         RoundedButtonWithIcon(
           onTap: () {
-            Messages.alert('Entrar com Google');
+            controller.socialLogin(SocialLoginType.google);
           },
           width: 150.sw,
           color: const Color(0xFFE15031),

@@ -5,13 +5,14 @@ import 'package:cuidapet_mobile_2/app/core/ui/widgets/cuidapet_default_button.da
 import 'package:cuidapet_mobile_2/app/core/ui/widgets/cuidapet_textform_field.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/widgets/messages.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/widgets/rounded_button_with_icon.dart';
+import 'package:cuidapet_mobile_2/app/models/social_login_type.dart';
 import 'package:cuidapet_mobile_2/app/modules/auth/login/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:validatorless/validatorless.dart';
 
 part 'widgets/login_form.dart';
-part 'widgets/login_register_button.dart';
+part 'widgets/login_register_buttons.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -37,7 +38,7 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 8),
               const _OrSeparator(),
               const SizedBox(height: 8),
-              const _LoginRegisterButton(),
+              _LoginRegisterButtons(),
             ],
           ),
         ),
