@@ -38,6 +38,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_dotenv: ^5.0.2
+  flutter_facebook_auth: ^4.3.4
   flutter_mobx: ^2.0.5
   flutter_modular: ^5.0.0
   flutter_screenutil: ^5.5.2
