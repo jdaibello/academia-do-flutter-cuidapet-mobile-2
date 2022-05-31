@@ -7,8 +7,8 @@ class _RegisterForm extends StatefulWidget {
   State<_RegisterForm> createState() => _RegisterFormState();
 }
 
-class _RegisterFormState
-    extends ModularState<_RegisterForm, RegisterController> {
+class _RegisterFormState extends State<_RegisterForm> {
+  final controller = Modular.get<RegisterController>();
   final _formKey = GlobalKey<FormState>();
   final _emailEC = TextEditingController();
   final _passwordEC = TextEditingController();

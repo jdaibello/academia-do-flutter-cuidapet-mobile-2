@@ -7,7 +7,8 @@ class _LoginForm extends StatefulWidget {
   _LoginFormState createState() => _LoginFormState();
 }
 
-class _LoginFormState extends ModularState<_LoginForm, LoginController> {
+class _LoginFormState extends State<_LoginForm> {
+  final controller = Modular.get<LoginController>();
   final _formKey = GlobalKey<FormState>();
   final _emailEC = TextEditingController();
   final _passwordEC = TextEditingController();
