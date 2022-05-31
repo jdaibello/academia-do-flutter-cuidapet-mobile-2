@@ -7,13 +7,13 @@ import 'package:mobx/mobx.dart';
 
 part 'register_controller.g.dart';
 
-class RegisterController = _RegisterControllerBase with _$RegisterController;
+class RegisterController = RegisterControllerBase with _$RegisterController;
 
-abstract class _RegisterControllerBase with Store {
+abstract class RegisterControllerBase with Store {
   final UserService _userService;
   final AppLogger _log;
 
-  _RegisterControllerBase({
+  RegisterControllerBase({
     required UserService userService,
     required AppLogger log,
   })  : _userService = userService,
