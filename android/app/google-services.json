@@ -14,19 +14,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "1015725883115-2d52bljrijvv54boffr998jr000enjfp.apps.googleusercontent.com",
+          "client_id": "1015725883115-5gls7tfj835kg208lm3dq040n2gi92pk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "br.com.academiadoflutter.cuidapet_mobile_2",
-            "certificate_hash": "662041608363ac0761097e524f704a50a24bb4c1"
-          }
-        },
-        {
-          "client_id": "1015725883115-j51svtr6ftm2b7um8s8gl4u0k2fan9vf.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "br.com.academiadoflutter.cuidapet_mobile_2",
-            "certificate_hash": "c381d18a8e742b90172753854755d26e8a301594"
+            "certificate_hash": "39d2d8829472ed277630f76a927372a634ac2dd6"
           }
         },
         {
