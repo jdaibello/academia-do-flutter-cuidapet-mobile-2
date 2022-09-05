@@ -10,5 +10,5 @@ class PlaceModel {
   });
 
   @override
-  String toString() => 'PlaceModel(address: $address, lat: $lat, lon: $lng)';
+  String toString() => 'PlaceModel(address: $address, lat: $lat, lng: $lng)';
 }

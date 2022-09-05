@@ -1,13 +1,29 @@
-part of '../address_page.dart';
+part of '../../address_page.dart';
+
+typedef AddressSelectedCallback = void Function(PlaceModel);
 
 class _AddressSearchWidget extends StatefulWidget {
-  const _AddressSearchWidget({Key? key}) : super(key: key);
+  final AddressSelectedCallback addressSelectedCallback;
+
+  const _AddressSearchWidget({required this.addressSelectedCallback});
 
   @override
   State<_AddressSearchWidget> createState() => _AddressSearchWidgetState();
 }
 
 class _AddressSearchWidgetState extends State<_AddressSearchWidget> {
+  final searchTextEC = TextEditingController();
+  final searchFN = FocusNode();
+
+  final controller = Modular.get<AddressSearchController>();
+
+  @override
+  void dispose() {
+    searchTextEC.dispose();
+    searchFN.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final border = OutlineInputBorder(
@@ -20,6 +36,8 @@ class _AddressSearchWidgetState extends State<_AddressSearchWidget> {
       borderRadius: BorderRadius.circular(20),
       child: TypeAheadFormField<PlaceModel>(
         textFieldConfiguration: TextFieldConfiguration(
+          controller: searchTextEC,
+          focusNode: searchFN,
           decoration: InputDecoration(
             prefixIcon: const Icon(Icons.location_on),
             hintText: 'Insira um endereço',
@@ -37,15 +55,18 @@ class _AddressSearchWidgetState extends State<_AddressSearchWidget> {
     );
   }
 
-  FutureOr<Iterable<PlaceModel>> _onSuggestionsCallback(String pattern) {
-    return [
-      PlaceModel(address: 'Av. Paulista, 200', lat: 123.0, lng: 135.0),
-      PlaceModel(address: 'Av. Paulista, 500', lat: 123.0, lng: 135.0),
-      PlaceModel(address: 'Av. Paulista, 1500', lat: 123.0, lng: 135.0),
-    ];
+  Future<List<PlaceModel>> _onSuggestionsCallback(String pattern) async {
+    if (pattern.isNotEmpty) {
+      return controller.searchAddress(pattern);
+    }
+
+    return <PlaceModel>[];
   }
 
-  void _onSuggestionSelected(PlaceModel suggestion) {}
+  void _onSuggestionSelected(PlaceModel suggestion) {
+    searchTextEC.text = suggestion.address;
+    widget.addressSelectedCallback(suggestion);
+  }
 }
 
 class _ItemTile extends StatelessWidget {
