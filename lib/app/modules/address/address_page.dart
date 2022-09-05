@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:cuidapet_mobile_2/app/core/ui/extensions/theme_extension.dart';
 import 'package:cuidapet_mobile_2/app/models/place_model.dart';
 import 'package:cuidapet_mobile_2/app/modules/address/widgets/address_search_widget/address_search_controller.dart';
@@ -40,7 +41,7 @@ class _AddressPageState extends State<AddressPage> {
               ),
               const SizedBox(height: 20),
               _AddressSearchWidget(addressSelectedCallback: (place) {
-                debugPrint(place.toString());
+                Modular.to.pushNamed('/address/detail', arguments: place);
               }),
               const SizedBox(height: 30),
               const ListTile(
