@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:cuidapet_mobile_2/app/core/database/sqlite_connection_factory.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/extensions/theme_extension.dart';
 import 'package:cuidapet_mobile_2/app/models/place_model.dart';
 import 'package:cuidapet_mobile_2/app/modules/address/widgets/address_search_widget/address_search_controller.dart';
@@ -20,6 +21,8 @@ class AddressPage extends StatefulWidget {
 class _AddressPageState extends State<AddressPage> {
   @override
   Widget build(BuildContext context) {
+    Modular.get<SqliteConnectionFactory>().openConnection();
+
     return Scaffold(
       appBar: AppBar(
         iconTheme: IconThemeData(color: context.primaryColorDark),
