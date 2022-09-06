@@ -15,7 +15,7 @@ class AddressServiceImpl implements AddressService {
       _addressRepository.findAddressByGooglePlaces(addressPattern);
 
   @override
-  Future<List<AddressEntity>> getAddress() => _addressRepository.getAddress();
+  Future<List<AddressEntity>> getAddresses() => _addressRepository.getAddress();
 
   @override
   Future<AddressEntity> saveAddress(
