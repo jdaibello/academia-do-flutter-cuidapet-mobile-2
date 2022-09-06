@@ -17,7 +17,7 @@ class _LoginRegisterButtons extends StatelessWidget {
           onTap: () {
             controller.socialLogin(SocialLoginType.facebook);
           },
-          width: 150.sw,
+          width: 150.w,
           color: const Color(0xFF4267B3),
           icon: CuidapetIcons.facebook,
           label: 'Facebook',
@@ -26,7 +26,7 @@ class _LoginRegisterButtons extends StatelessWidget {
           onTap: () {
             controller.socialLogin(SocialLoginType.google);
           },
-          width: 150.sw,
+          width: 150.w,
           color: const Color(0xFFE15031),
           icon: CuidapetIcons.google,
           label: 'Google',
@@ -35,7 +35,7 @@ class _LoginRegisterButtons extends StatelessWidget {
           onTap: () {
             Navigator.pushNamed(context, '/auth/register');
           },
-          width: 150.sw,
+          width: 150.w,
           color: context.primaryColorDark,
           icon: Icons.mail,
           label: 'Cadastre-se',
