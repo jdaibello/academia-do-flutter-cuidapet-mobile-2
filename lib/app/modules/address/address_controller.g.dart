@@ -13,16 +13,17 @@ mixin _$AddressController on AddressControllerBase, Store {
       name: 'AddressControllerBase._locationServiceUnavailable',
       context: context);
 
-  bool get locationServiceUnavailable {
+  Observable<bool> get locationServiceUnavailable {
     _$_locationServiceUnavailableAtom.reportRead();
     return super._locationServiceUnavailable;
   }
 
   @override
-  bool get _locationServiceUnavailable => locationServiceUnavailable;
+  Observable<bool> get _locationServiceUnavailable =>
+      locationServiceUnavailable;
 
   @override
-  set _locationServiceUnavailable(bool value) {
+  set _locationServiceUnavailable(Observable<bool> value) {
     _$_locationServiceUnavailableAtom
         .reportWrite(value, super._locationServiceUnavailable, () {
       super._locationServiceUnavailable = value;
@@ -32,16 +33,16 @@ mixin _$AddressController on AddressControllerBase, Store {
   late final _$_locationPermissionAtom =
       Atom(name: 'AddressControllerBase._locationPermission', context: context);
 
-  LocationPermission? get locationPermission {
+  Observable<LocationPermission>? get locationPermission {
     _$_locationPermissionAtom.reportRead();
     return super._locationPermission;
   }
 
   @override
-  LocationPermission? get _locationPermission => locationPermission;
+  Observable<LocationPermission>? get _locationPermission => locationPermission;
 
   @override
-  set _locationPermission(LocationPermission? value) {
+  set _locationPermission(Observable<LocationPermission>? value) {
     _$_locationPermissionAtom.reportWrite(value, super._locationPermission, () {
       super._locationPermission = value;
     });
