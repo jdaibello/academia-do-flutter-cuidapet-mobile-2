@@ -31,24 +31,23 @@ class _AddressPageState
   @override
   void initState() {
     super.initState();
-    final reactionService = reaction<Observable<bool>>(
+    final reactionService = reaction<bool>(
       (_) => controller.locationServiceUnavailable,
       (locationServiceUnavailable) {
-        if (locationServiceUnavailable.value) {
+        if (locationServiceUnavailable) {
           showDialogLocationServiceUnavailable();
         }
       },
     );
 
-    final reactionLocationPermission =
-        reaction<Observable<LocationPermission>?>(
+    final reactionLocationPermission = reaction<LocationPermission?>(
       (_) => controller.locationPermission,
       (locationPermission) {
         if (locationPermission != null &&
-            locationPermission.value == LocationPermission.denied) {
+            locationPermission == LocationPermission.denied) {
           showDialogLocationDenied(tryAgain: () => controller.myLocation());
         } else if (locationPermission != null &&
-            locationPermission.value == LocationPermission.deniedForever) {
+            locationPermission == LocationPermission.deniedForever) {
           showDialogLocationDeniedForever();
         }
       },

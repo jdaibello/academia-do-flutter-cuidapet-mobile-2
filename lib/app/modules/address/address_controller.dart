@@ -19,10 +19,10 @@ abstract class AddressControllerBase with Store, ControllerLifeCycle {
       : _addressService = addressService;
 
   @readonly
-  var _locationServiceUnavailable = false.asObservable();
+  var _locationServiceUnavailable = false;
 
   @readonly
-  Observable<LocationPermission>? _locationPermission;
+  LocationPermission? _locationPermission;
 
   @readonly
   var _addresses = <AddressEntity>[];
@@ -41,10 +41,12 @@ abstract class AddressControllerBase with Store, ControllerLifeCycle {
 
   @action
   Future<void> myLocation() async {
+    _locationPermission = null;
+    _locationServiceUnavailable = false;
     final serviceEnable = await Geolocator.isLocationServiceEnabled();
 
     if (!serviceEnable) {
-      _locationServiceUnavailable = true.asObservable();
+      _locationServiceUnavailable = true;
       return;
     }
 
@@ -56,12 +58,12 @@ abstract class AddressControllerBase with Store, ControllerLifeCycle {
 
         if (permssion == LocationPermission.denied ||
             permssion == LocationPermission.deniedForever) {
-          _locationPermission = Observable(permssion);
+          _locationPermission = permssion;
           return;
         }
         break;
       case LocationPermission.deniedForever:
-        _locationPermission = Observable(locationPermission);
+        _locationPermission = locationPermission;
         return;
       case LocationPermission.whileInUse:
       case LocationPermission.always:
