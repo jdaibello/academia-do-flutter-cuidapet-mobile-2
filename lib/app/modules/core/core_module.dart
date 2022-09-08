@@ -56,6 +56,7 @@ class CoreModule extends Module {
     Bind.lazySingleton<AddressService>(
       (i) => AddressServiceImpl(
         addressRepository: i(),
+        localStorage: i(),
       ),
       export: true,
     ),

@@ -61,7 +61,9 @@ class _AddressSearchWidgetState extends State<_AddressSearchWidget> {
           ),
         ),
         itemBuilder: (_, item) {
-          return _ItemTile(address: item.address);
+          return _ItemTile(
+            address: item.address,
+          );
         },
         onSuggestionSelected: _onSuggestionSelected,
         suggestionsCallback: _onSuggestionsCallback,
@@ -85,12 +87,17 @@ class _AddressSearchWidgetState extends State<_AddressSearchWidget> {
 
 class _ItemTile extends StatelessWidget {
   final String address;
+  final VoidCallback? onTap;
 
-  const _ItemTile({required this.address});
+  const _ItemTile({
+    this.onTap,
+    required this.address,
+  });
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: onTap,
       leading: const Icon(Icons.location_on),
       title: Text(address),
     );

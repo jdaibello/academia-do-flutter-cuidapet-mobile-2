@@ -13,7 +13,6 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:mobx/mobx.dart';
 
-part 'widgets/address_item.dart';
 part 'widgets/address_search_widget/address_search_widget.dart';
 
 class AddressPage extends StatefulWidget {
@@ -121,7 +120,12 @@ class _AddressPageState
                 builder: (_) {
                   return Column(
                     children: controller.addresses
-                        .map((a) => _ItemTile(address: a.address))
+                        .map((a) => _ItemTile(
+                              onTap: () {
+                                controller.selectAddress(a);
+                              },
+                              address: a.address,
+                            ))
                         .toList(),
                   );
                 },
