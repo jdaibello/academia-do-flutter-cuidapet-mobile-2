@@ -1,4 +1,4 @@
-import 'package:asuka/asuka.dart' as asuka;
+import 'package:asuka/asuka.dart';
 import 'package:cuidapet_mobile_2/app/core/database/sqlite_adm_connection.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/ui_config.dart';
 import 'package:flutter/material.dart';
@@ -30,14 +30,14 @@ class _AppWidgetState extends State<AppWidget> {
   @override
   Widget build(BuildContext context) {
     Modular.setInitialRoute('/auth');
-    Modular.setObservers([asuka.asukaHeroController]);
+    Modular.setObservers([Asuka.asukaHeroController]);
 
     return ScreenUtilInit(
       designSize: const Size(390, 844),
       builder: (_, __) => MaterialApp.router(
         title: UiConfig.title,
         debugShowCheckedModeBanner: false,
-        builder: asuka.builder,
+        builder: Asuka.builder,
         theme: UiConfig.theme,
         routeInformationParser: Modular.routeInformationParser,
         routerDelegate: Modular.routerDelegate,

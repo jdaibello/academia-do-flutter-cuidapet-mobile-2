@@ -1,4 +1,4 @@
-import 'package:asuka/asuka.dart' as asuka;
+import 'package:asuka/asuka.dart';
 import 'package:flutter/material.dart';
 
 class Loader {
@@ -21,7 +21,7 @@ class Loader {
 
     if (!_open) {
       _open = true;
-      asuka.addOverlay(_entry!);
+      Asuka.addOverlay(_entry!);
     }
   }
 
