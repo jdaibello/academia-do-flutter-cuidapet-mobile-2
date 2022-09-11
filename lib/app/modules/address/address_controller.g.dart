@@ -117,6 +117,15 @@ mixin _$AddressController on AddressControllerBase, Store {
         .run(() => super.selectAddress(addressEntity));
   }
 
+  late final _$addressWasSelectedAsyncAction =
+      AsyncAction('AddressControllerBase.addressWasSelected', context: context);
+
+  @override
+  Future<bool> addressWasSelected() {
+    return _$addressWasSelectedAsyncAction
+        .run(() => super.addressWasSelected());
+  }
+
   @override
   String toString() {
     return '''
