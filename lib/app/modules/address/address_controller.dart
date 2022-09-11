@@ -96,6 +96,7 @@ abstract class AddressControllerBase with Store, ControllerLifeCycle {
     goToAddressDetail(placeModel);
   }
 
+  @action
   Future<void> goToAddressDetail(PlaceModel place) async {
     final address = await Modular.to.pushNamed(
       '/address/detail/',
@@ -111,8 +112,9 @@ abstract class AddressControllerBase with Store, ControllerLifeCycle {
     }
   }
 
+  @action
   Future<void> selectAddress(AddressEntity addressEntity) async {
     await _addressService.selectAddress(addressEntity);
-    Modular.to.pop();
+    Modular.to.pop(addressEntity);
   }
 }

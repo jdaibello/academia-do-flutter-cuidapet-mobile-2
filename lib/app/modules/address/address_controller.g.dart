@@ -99,6 +99,24 @@ mixin _$AddressController on AddressControllerBase, Store {
     return _$myLocationAsyncAction.run(() => super.myLocation());
   }
 
+  late final _$goToAddressDetailAsyncAction =
+      AsyncAction('AddressControllerBase.goToAddressDetail', context: context);
+
+  @override
+  Future<void> goToAddressDetail(PlaceModel place) {
+    return _$goToAddressDetailAsyncAction
+        .run(() => super.goToAddressDetail(place));
+  }
+
+  late final _$selectAddressAsyncAction =
+      AsyncAction('AddressControllerBase.selectAddress', context: context);
+
+  @override
+  Future<void> selectAddress(AddressEntity addressEntity) {
+    return _$selectAddressAsyncAction
+        .run(() => super.selectAddress(addressEntity));
+  }
+
   @override
   String toString() {
     return '''
