@@ -3,6 +3,9 @@ import 'package:cuidapet_mobile_2/app/entities/address_entity.dart';
 import 'package:cuidapet_mobile_2/app/modules/home/home_controller.dart';
 import 'package:cuidapet_mobile_2/app/modules/home/widgets/home_appbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+
+part 'widgets/home_address_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,7 +25,12 @@ class _HomePageState extends PageLifeCycleState<HomeController, HomePage> {
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return <Widget>[
-            const HomeAppBar(),
+            HomeAppBar(controller),
+            SliverToBoxAdapter(
+              child: _HomeAddressWidget(
+                controller: controller,
+              ),
+            ),
           ];
         },
         body: Container(),
