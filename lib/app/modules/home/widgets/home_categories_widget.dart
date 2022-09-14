@@ -1,17 +1,28 @@
 part of '../home_page.dart';
 
 class _HomeCategoriesWidget extends StatelessWidget {
-  const _HomeCategoriesWidget();
+  final HomeController _controller;
+
+  const _HomeCategoriesWidget(this._controller);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 130,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 15,
-        itemBuilder: (context, index) {
-          return const _CategoryItem();
+      child: Observer(
+        builder: (_) {
+          return Center(
+            child: ListView.builder(
+              shrinkWrap: true,
+              scrollDirection: Axis.horizontal,
+              itemCount: _controller.categoriesList.length,
+              itemBuilder: (context, index) {
+                final category = _controller.categoriesList[index];
+
+                return _CategoryItem(category);
+              },
+            ),
+          );
         },
       ),
     );
@@ -19,7 +30,15 @@ class _HomeCategoriesWidget extends StatelessWidget {
 }
 
 class _CategoryItem extends StatelessWidget {
-  const _CategoryItem();
+  static const categoriesIcons = {
+    'P': Icons.pets,
+    'V': Icons.local_hospital,
+    'C': Icons.store_mall_directory,
+  };
+
+  final SupplierCategoryModel _categoryModel;
+
+  const _CategoryItem(this._categoryModel);
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +49,14 @@ class _CategoryItem extends StatelessWidget {
           CircleAvatar(
             backgroundColor: context.primaryColorLight,
             radius: 30,
-            child: const Icon(
-              Icons.pets,
+            child: Icon(
+              categoriesIcons[_categoryModel.type],
               size: 30,
               color: Colors.black,
             ),
           ),
-          const SizedBox(height: 5),
-          const Text('Petshop'),
+          const SizedBox(height: 10),
+          Text(_categoryModel.name),
         ],
       ),
     );

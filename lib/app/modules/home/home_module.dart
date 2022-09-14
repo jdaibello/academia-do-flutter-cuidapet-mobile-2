@@ -9,6 +9,7 @@ class HomeModule extends Module {
     Bind.singleton(
       (i) => HomeController(
         addressService: i(),
+        supplierService: i(),
       ),
     ),
   ];
