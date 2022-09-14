@@ -40,6 +40,9 @@ abstract class HomeControllerBase with Store, ControllerLifeCycle {
       Loader.show();
       await getAddressSelected();
       await _getCategories();
+      if (_addressEntity != null) {
+        await _supplierService.findNearBy(_addressEntity!);
+      }
     } finally {
       Loader.hide();
     }
