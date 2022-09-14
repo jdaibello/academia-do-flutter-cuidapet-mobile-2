@@ -10,9 +10,9 @@ import './address_repository.dart';
 class AddressRepositoryImpl implements AddressRepository {
   final SqliteConnectionFactory _sqliteConnectionFactory;
 
-  const AddressRepositoryImpl(
-      {required SqliteConnectionFactory sqliteConnectionFactory})
-      : _sqliteConnectionFactory = sqliteConnectionFactory;
+  const AddressRepositoryImpl({
+    required SqliteConnectionFactory sqliteConnectionFactory,
+  }) : _sqliteConnectionFactory = sqliteConnectionFactory;
 
   @override
   Future<List<PlaceModel>> findAddressByGooglePlaces(
