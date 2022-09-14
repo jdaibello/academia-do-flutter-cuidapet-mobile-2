@@ -1,4 +1,5 @@
 import 'package:cuidapet_mobile_2/app/core/life_cycle/page_life_cycle_state.dart';
+import 'package:cuidapet_mobile_2/app/core/ui/extensions/size_screen_extension.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/extensions/theme_extension.dart';
 import 'package:cuidapet_mobile_2/app/entities/address_entity.dart';
 import 'package:cuidapet_mobile_2/app/models/supplier_category_model.dart';
