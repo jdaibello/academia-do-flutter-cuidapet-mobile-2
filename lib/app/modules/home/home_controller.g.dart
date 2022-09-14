@@ -64,6 +64,26 @@ mixin _$HomeController on HomeControllerBase, Store {
     });
   }
 
+  late final _$_suppliersByAddressListAtom = Atom(
+      name: 'HomeControllerBase._suppliersByAddressList', context: context);
+
+  List<SupplierNearByMeModel> get suppliersByAddressList {
+    _$_suppliersByAddressListAtom.reportRead();
+    return super._suppliersByAddressList;
+  }
+
+  @override
+  List<SupplierNearByMeModel> get _suppliersByAddressList =>
+      suppliersByAddressList;
+
+  @override
+  set _suppliersByAddressList(List<SupplierNearByMeModel> value) {
+    _$_suppliersByAddressListAtom
+        .reportWrite(value, super._suppliersByAddressList, () {
+      super._suppliersByAddressList = value;
+    });
+  }
+
   late final _$getAddressSelectedAsyncAction =
       AsyncAction('HomeControllerBase.getAddressSelected', context: context);
 
@@ -87,6 +107,16 @@ mixin _$HomeController on HomeControllerBase, Store {
   @override
   Future<void> _getCategories() {
     return _$_getCategoriesAsyncAction.run(() => super._getCategories());
+  }
+
+  late final _$findSuppliersByAddressAsyncAction = AsyncAction(
+      'HomeControllerBase.findSuppliersByAddress',
+      context: context);
+
+  @override
+  Future<void> findSuppliersByAddress() {
+    return _$findSuppliersByAddressAsyncAction
+        .run(() => super.findSuppliersByAddress());
   }
 
   late final _$HomeControllerBaseActionController =

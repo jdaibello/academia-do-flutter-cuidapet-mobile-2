@@ -3,6 +3,7 @@ import 'package:cuidapet_mobile_2/app/core/ui/extensions/size_screen_extension.d
 import 'package:cuidapet_mobile_2/app/core/ui/extensions/theme_extension.dart';
 import 'package:cuidapet_mobile_2/app/entities/address_entity.dart';
 import 'package:cuidapet_mobile_2/app/models/supplier_category_model.dart';
+import 'package:cuidapet_mobile_2/app/models/supplier_near_by_me_model.dart';
 import 'package:cuidapet_mobile_2/app/modules/home/home_controller.dart';
 import 'package:cuidapet_mobile_2/app/modules/home/widgets/home_appbar.dart';
 import 'package:flutter/material.dart';
