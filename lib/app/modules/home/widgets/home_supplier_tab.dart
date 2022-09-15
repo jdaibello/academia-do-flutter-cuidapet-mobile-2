@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of '../home_page.dart';
 
 class _HomeSupplierTab extends StatelessWidget {
@@ -206,9 +207,9 @@ class _HomeSupplierListItemWidget extends StatelessWidget {
 }
 
 class _HomeSupplierGrid extends StatelessWidget {
-  final HomeController _homeController;
+  final HomeController controller;
 
-  const _HomeSupplierGrid(this._homeController);
+  const _HomeSupplierGrid(this.controller);
 
   @override
   Widget build(BuildContext context) {
@@ -216,9 +217,11 @@ class _HomeSupplierGrid extends StatelessWidget {
       slivers: [
         SliverGrid(
           delegate: SliverChildBuilderDelegate(
-            childCount: 10,
+            childCount: controller.suppliersByAddressList.length,
             (context, index) {
-              return _HomeSupplierCardItemWidget();
+              final supplier = controller.suppliersByAddressList[index];
+
+              return _HomeSupplierCardItemWidget(supplier: supplier);
             },
           ),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -232,7 +235,9 @@ class _HomeSupplierGrid extends StatelessWidget {
 }
 
 class _HomeSupplierCardItemWidget extends StatelessWidget {
-  const _HomeSupplierCardItemWidget();
+  final SupplierNearByMeModel supplier;
+
+  const _HomeSupplierCardItemWidget({required this.supplier});
 
   @override
   Widget build(BuildContext context) {
@@ -261,13 +266,13 @@ class _HomeSupplierCardItemWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Text(
-                    'Clínica Central ABC',
+                    supplier.name,
                     style: context.textTheme.subtitle2,
                     textAlign: TextAlign.center,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const Text(
-                    '1.34 Km de distância',
+                  Text(
+                    '${supplier.distance.toStringAsFixed(2)} de distância',
                     overflow: TextOverflow.ellipsis,
                   ),
                 ],
@@ -282,7 +287,7 @@ class _HomeSupplierCardItemWidget extends StatelessWidget {
             backgroundColor: Colors.grey[200],
           ),
         ),
-        const Positioned(
+        Positioned(
           top: 4,
           left: 0,
           right: 0,
@@ -290,7 +295,7 @@ class _HomeSupplierCardItemWidget extends StatelessWidget {
             child: CircleAvatar(
               radius: 35,
               backgroundImage: NetworkImage(
-                'https://static1.patasdacasa.com.br/articles/5/16/5/@/376-saiba-tudo-sobre-uma-das-racas-de-cachor-articles_media_mobile-1.jpg',
+                supplier.logo,
               ),
             ),
           ),
