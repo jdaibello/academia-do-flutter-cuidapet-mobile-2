@@ -18,7 +18,7 @@ class _HomeSupplierTab extends StatelessWidget {
                 child: homeController.supplierPageTypeSelected ==
                         SupplierPageType.list
                     ? _HomeSupplierList(homeController)
-                    : _HomeSupplierGrid(),
+                    : _HomeSupplierGrid(homeController),
               );
             },
           ),
@@ -206,8 +206,96 @@ class _HomeSupplierListItemWidget extends StatelessWidget {
 }
 
 class _HomeSupplierGrid extends StatelessWidget {
+  final HomeController _homeController;
+
+  const _HomeSupplierGrid(this._homeController);
+
   @override
   Widget build(BuildContext context) {
-    return const Text('Supplier Grid');
+    return CustomScrollView(
+      slivers: [
+        SliverGrid(
+          delegate: SliverChildBuilderDelegate(
+            childCount: 10,
+            (context, index) {
+              return _HomeSupplierCardItemWidget();
+            },
+          ),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: 1.1,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class _HomeSupplierCardItemWidget extends StatelessWidget {
+  const _HomeSupplierCardItemWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Card(
+          margin: const EdgeInsets.only(
+            top: 40,
+            left: 10,
+            right: 10,
+            bottom: 10,
+          ),
+          elevation: 5,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: SizedBox.expand(
+            child: Padding(
+              padding: const EdgeInsets.only(
+                top: 40,
+                left: 10,
+                right: 10,
+                bottom: 10,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    'Clínica Central ABC',
+                    style: context.textTheme.subtitle2,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  const Text(
+                    '1.34 Km de distância',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.topCenter,
+          child: CircleAvatar(
+            radius: 40,
+            backgroundColor: Colors.grey[200],
+          ),
+        ),
+        const Positioned(
+          top: 4,
+          left: 0,
+          right: 0,
+          child: Center(
+            child: CircleAvatar(
+              radius: 35,
+              backgroundImage: NetworkImage(
+                'https://static1.patasdacasa.com.br/articles/5/16/5/@/376-saiba-tudo-sobre-uma-das-racas-de-cachor-articles_media_mobile-1.jpg',
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
