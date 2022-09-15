@@ -32,6 +32,11 @@ abstract class HomeControllerBase with Store, ControllerLifeCycle {
   @readonly
   var _suppliersByAddressList = <SupplierNearByMeModel>[];
 
+  var _suppliersByAddressCacheList = <SupplierNearByMeModel>[];
+
+  @readonly
+  SupplierCategoryModel? _supplierCategoryFilterSelected;
+
   late ReactionDisposer findSuppliersReactionDisposer;
 
   HomeControllerBase({
@@ -102,10 +107,36 @@ abstract class HomeControllerBase with Store, ControllerLifeCycle {
     if (_addressEntity != null) {
       final suppliers = await _supplierService.findNearBy(_addressEntity!);
       _suppliersByAddressList = [...suppliers];
+      _suppliersByAddressCacheList = [...suppliers];
+      filterSupplier();
     } else {
       Messages.alert(
         'Para realizar a busca de petshops você precisa selecionar um endereço',
       );
     }
+  }
+
+  @action
+  void filterSupplierCategory(SupplierCategoryModel category) {
+    if (_supplierCategoryFilterSelected == category) {
+      _supplierCategoryFilterSelected = null;
+    } else {
+      _supplierCategoryFilterSelected = category;
+    }
+    filterSupplier();
+  }
+
+  @action
+  void filterSupplier() {
+    var suppliers = [..._suppliersByAddressCacheList];
+    if (_supplierCategoryFilterSelected != null) {
+      suppliers = suppliers
+          .where(
+            (supplier) =>
+                supplier.categoryId == _supplierCategoryFilterSelected?.id,
+          )
+          .toList();
+    }
+    _suppliersByAddressList = [...suppliers];
   }
 }

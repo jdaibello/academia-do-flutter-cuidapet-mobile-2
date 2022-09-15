@@ -5,14 +5,14 @@ class SupplierNearByMeModel {
   final String name;
   final String logo;
   final double distance;
-  final int category;
+  final int categoryId;
 
   SupplierNearByMeModel({
     required this.id,
     required this.name,
     required this.logo,
     required this.distance,
-    required this.category,
+    required this.categoryId,
   });
 
   Map<String, dynamic> toMap() {
@@ -21,7 +21,7 @@ class SupplierNearByMeModel {
       'name': name,
       'logo': logo,
       'distance': distance,
-      'category': category,
+      'category_id': categoryId,
     };
   }
 
@@ -31,7 +31,7 @@ class SupplierNearByMeModel {
       name: map['name'] ?? '',
       logo: map['logo'] ?? '',
       distance: map['distance']?.toDouble() ?? 0.0,
-      category: map['category']?.toInt() ?? 0,
+      categoryId: map['category_id']?.toInt() ?? 0,
     );
   }
 
