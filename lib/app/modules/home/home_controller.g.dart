@@ -166,6 +166,17 @@ mixin _$HomeController on HomeControllerBase, Store {
   }
 
   @override
+  void filterSupplierByName(String name) {
+    final _$actionInfo = _$HomeControllerBaseActionController.startAction(
+        name: 'HomeControllerBase.filterSupplierByName');
+    try {
+      return super.filterSupplierByName(name);
+    } finally {
+      _$HomeControllerBaseActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   void filterSupplier() {
     final _$actionInfo = _$HomeControllerBaseActionController.startAction(
         name: 'HomeControllerBase.filterSupplier');

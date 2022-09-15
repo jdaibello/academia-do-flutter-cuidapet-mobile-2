@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:cuidapet_mobile_2/app/core/life_cycle/controller_life_cycle.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/widgets/loader.dart';
 import 'package:cuidapet_mobile_2/app/core/ui/widgets/messages.dart';
@@ -33,6 +32,8 @@ abstract class HomeControllerBase with Store, ControllerLifeCycle {
   var _suppliersByAddressList = <SupplierNearByMeModel>[];
 
   var _suppliersByAddressCacheList = <SupplierNearByMeModel>[];
+
+  var _nameSearchText = '';
 
   @readonly
   SupplierCategoryModel? _supplierCategoryFilterSelected;
@@ -127,6 +128,12 @@ abstract class HomeControllerBase with Store, ControllerLifeCycle {
   }
 
   @action
+  void filterSupplierByName(String name) {
+    _nameSearchText = name;
+    filterSupplier();
+  }
+
+  @action
   void filterSupplier() {
     var suppliers = [..._suppliersByAddressCacheList];
     if (_supplierCategoryFilterSelected != null) {
@@ -137,6 +144,15 @@ abstract class HomeControllerBase with Store, ControllerLifeCycle {
           )
           .toList();
     }
+
+    if (_nameSearchText.isNotEmpty) {
+      suppliers = suppliers
+          .where((supplier) => supplier.name
+              .toLowerCase()
+              .contains(_nameSearchText.toLowerCase()))
+          .toList();
+    }
+
     _suppliersByAddressList = [...suppliers];
   }
 }

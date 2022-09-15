@@ -97,6 +97,7 @@ class _HomeSupplierList extends StatelessWidget {
                 (context, index) {
                   final supplier =
                       _homeController.suppliersByAddressList[index];
+
                   return _HomeSupplierListItemWidget(supplier: supplier);
                 },
               ),
@@ -215,19 +216,23 @@ class _HomeSupplierGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverGrid(
-          delegate: SliverChildBuilderDelegate(
-            childCount: controller.suppliersByAddressList.length,
-            (context, index) {
-              final supplier = controller.suppliersByAddressList[index];
+        Observer(
+          builder: (_) {
+            return SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                childCount: controller.suppliersByAddressList.length,
+                (context, index) {
+                  final supplier = controller.suppliersByAddressList[index];
 
-              return _HomeSupplierCardItemWidget(supplier: supplier);
-            },
-          ),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 1.1,
-          ),
+                  return _HomeSupplierCardItemWidget(supplier: supplier);
+                },
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 1.1,
+              ),
+            );
+          },
         ),
       ],
     );
