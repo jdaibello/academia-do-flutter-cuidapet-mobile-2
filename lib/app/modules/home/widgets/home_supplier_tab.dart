@@ -116,92 +116,97 @@ class _HomeSupplierListItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-      child: Stack(
-        children: [
-          Container(
-            margin: const EdgeInsets.only(left: 30),
-            width: 1.sw,
-            height: 80.h,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: const EdgeInsets.only(left: 50),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          supplier.name,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(height: 10),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.location_on,
-                              size: 16,
-                            ),
-                            Text(
-                              '${supplier.distance.toStringAsFixed(2)} Km de distância',
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  child: CircleAvatar(
-                    backgroundColor: context.primaryColor,
-                    maxRadius: 15,
-                    child: const Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
-                      size: 15,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.only(top: 5),
-            width: 70.w,
-            height: 70.h,
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              border: Border.all(
-                color: Colors.transparent,
-                width: 1,
-              ),
-              borderRadius: BorderRadius.circular(100),
-            ),
-            child: Container(
+    return InkWell(
+      onTap: () {
+        Modular.to.pushNamed('/supplier/', arguments: supplier.id);
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        child: Stack(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(left: 30),
+              width: 1.sw,
+              height: 80.h,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.grey[100]!,
-                  width: 5,
-                ),
-                color: Colors.grey,
-                borderRadius: BorderRadius.circular(100),
-                image: DecorationImage(
-                  image: NetworkImage(
-                    supplier.logo,
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(5),
+              ),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 50),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            supplier.name,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                          const SizedBox(height: 10),
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.location_on,
+                                size: 16,
+                              ),
+                              Text(
+                                '${supplier.distance.toStringAsFixed(2)} Km de distância',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  fit: BoxFit.cover,
+                  Container(
+                    margin: const EdgeInsets.all(10),
+                    child: CircleAvatar(
+                      backgroundColor: context.primaryColor,
+                      maxRadius: 15,
+                      child: const Icon(
+                        Icons.arrow_forward_ios,
+                        color: Colors.white,
+                        size: 15,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 5),
+              width: 70.w,
+              height: 70.h,
+              decoration: BoxDecoration(
+                color: Colors.transparent,
+                border: Border.all(
+                  color: Colors.transparent,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(100),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.grey[100]!,
+                    width: 5,
+                  ),
+                  color: Colors.grey,
+                  borderRadius: BorderRadius.circular(100),
+                  image: DecorationImage(
+                    image: NetworkImage(
+                      supplier.logo,
+                    ),
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -246,66 +251,71 @@ class _HomeSupplierCardItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Card(
-          margin: const EdgeInsets.only(
-            top: 40,
-            left: 10,
-            right: 10,
-            bottom: 10,
-          ),
-          elevation: 5,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: SizedBox.expand(
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 40,
-                left: 10,
-                right: 10,
-                bottom: 10,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Text(
-                    supplier.name,
-                    style: context.textTheme.subtitle2,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(
-                    '${supplier.distance.toStringAsFixed(2)} de distância',
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+    return InkWell(
+      onTap: () {
+        Modular.to.pushNamed('/supplier/', arguments: supplier.id);
+      },
+      child: Stack(
+        children: [
+          Card(
+            margin: const EdgeInsets.only(
+              top: 40,
+              left: 10,
+              right: 10,
+              bottom: 10,
+            ),
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: SizedBox.expand(
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 40,
+                  left: 10,
+                  right: 10,
+                  bottom: 10,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      supplier.name,
+                      style: context.textTheme.subtitle2,
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    Text(
+                      '${supplier.distance.toStringAsFixed(2)} de distância',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
-        ),
-        Align(
-          alignment: Alignment.topCenter,
-          child: CircleAvatar(
-            radius: 40,
-            backgroundColor: Colors.grey[200],
-          ),
-        ),
-        Positioned(
-          top: 4,
-          left: 0,
-          right: 0,
-          child: Center(
+          Align(
+            alignment: Alignment.topCenter,
             child: CircleAvatar(
-              radius: 35,
-              backgroundImage: NetworkImage(
-                supplier.logo,
+              radius: 40,
+              backgroundColor: Colors.grey[200],
+            ),
+          ),
+          Positioned(
+            top: 4,
+            left: 0,
+            right: 0,
+            child: Center(
+              child: CircleAvatar(
+                radius: 35,
+                backgroundImage: NetworkImage(
+                  supplier.logo,
+                ),
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
