@@ -3,8 +3,37 @@ import 'package:cuidapet_mobile_2/app/modules/supplier/widgets/supplier_detail.d
 import 'package:cuidapet_mobile_2/app/modules/supplier/widgets/supplier_service_widget.dart';
 import 'package:flutter/material.dart';
 
-class SupplierPage extends StatelessWidget {
+class SupplierPage extends StatefulWidget {
   const SupplierPage({Key? key}) : super(key: key);
+
+  @override
+  State<SupplierPage> createState() => _SupplierPageState();
+}
+
+class _SupplierPageState extends State<SupplierPage> {
+  late ScrollController _scrollController;
+  bool sliverCollaped = false;
+
+  @override
+  void initState() {
+    _scrollController = ScrollController();
+
+    _scrollController.addListener(() {
+      if (_scrollController.offset > 178 &&
+          !_scrollController.position.outOfRange) {
+        setState(() {
+          sliverCollaped = true;
+        });
+      } else if (_scrollController.offset <= 178 &&
+          !_scrollController.position.outOfRange) {
+        setState(() {
+          sliverCollaped = false;
+        });
+      }
+    });
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +46,17 @@ class SupplierPage extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       body: CustomScrollView(
+        controller: _scrollController,
         slivers: [
           SliverAppBar(
             expandedHeight: 200,
             pinned: true,
+            title: Visibility(
+              visible: sliverCollaped,
+              child: const Text(
+                'Clínica Central ABC',
+              ),
+            ),
             flexibleSpace: FlexibleSpaceBar(
               stretchModes: const [
                 StretchMode.zoomBackground,
@@ -51,7 +87,7 @@ class SupplierPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: 200,
+              childCount: 100,
               (context, index) {
                 return const SupplierServiceWidget();
               },

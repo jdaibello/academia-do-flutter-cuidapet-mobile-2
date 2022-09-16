@@ -13,7 +13,7 @@ class SupplierDetail extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
           child: Center(
             child: Text(
-              'Clínica Centrar ABC',
+              'Clínica Central ABC',
               style: context.textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),
